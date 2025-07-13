@@ -9,6 +9,8 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
+import { provideStore } from '@ngrx/store';
+import { loginReducer } from './store/auth/auth.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,5 +18,8 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
+    provideStore({
+      login: loginReducer,
+    }),
   ],
 };
