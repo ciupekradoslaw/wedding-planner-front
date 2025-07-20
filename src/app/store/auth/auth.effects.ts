@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { AuthService } from '../../shared/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { login, loginFailed, loginSuccess } from './auth.actions';
 import { catchError, map, of, switchMap } from 'rxjs';
 
@@ -14,7 +14,9 @@ export class LoginEffects {
       ofType(login),
       switchMap(({ username, password }) =>
         this.authService.login({ username, password }).pipe(
-          map((response) => loginSuccess({ token: response.token })),
+          map((response) =>
+            loginSuccess({ username: response.username, token: response.token })
+          ),
           catchError((error) => of(loginFailed({ error })))
         )
       )

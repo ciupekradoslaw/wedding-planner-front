@@ -1,11 +1,15 @@
 export interface AuthState {
+  username: string;
   token: string;
   error: string;
-  loading: boolean;
+  isLoading: boolean;
+  isAuthenticated: boolean;
 }
 
 export const authInitialState: AuthState = {
+  username: null,
   token: null,
   error: null,
-  loading: false
-}
+  isLoading: false,
+  isAuthenticated: false,
+};

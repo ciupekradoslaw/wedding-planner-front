@@ -1,8 +1,9 @@
 import { FormControl } from '@angular/forms';
 
-export type LoginResponse = {
-  token?: string;
-};
+export interface UserInterface {
+  username: string;
+  token: string;
+}
 
 export type LoginRequest = {
   username: string;
