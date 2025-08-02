@@ -1,22 +1,23 @@
 @use "@angular/material" as mat;
+@import "./app/themes/theme.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* You can add global styles to this file, and also import other style files */
-
-html {
-  @include mat.theme(
-    (
-      color: (
-        primary: mat.$cyan-palette,
-        theme-type: dark,
-      ),
-      typography: Roboto
-    )
-  );
-}
+//
+//html {
+//  @include mat.theme(
+//    (
+//      color: (
+//        primary: mat.$cyan-palette,
+//        theme-type: dark,
+//      ),
+//      typography: Roboto
+//    )
+//  );
+//}
 
 html,
 body {
