@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatButtonModule,
   ],
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
   providers: [LoginFacade],
 })
 export class LoginComponent {
