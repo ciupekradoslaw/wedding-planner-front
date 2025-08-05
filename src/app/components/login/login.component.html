@@ -4,7 +4,7 @@
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
         <h1 class="text-2xl font-semibold mb-2">Login</h1>
 
-        @if (!loginValid) {
+        @if (facade.error()) {
           <mat-error class="text-red-400">The username or password is incorrect</mat-error>
         }
 
@@ -28,7 +28,7 @@
           mat-raised-button
           color="primary"
           class="w-full py-2 rounded-md text-black font-medium"
-          [disabled]="loginForm.invalid"
+          [disabled]="loginForm.invalid || facade.isLoading()"
         >
           Login
         </button>

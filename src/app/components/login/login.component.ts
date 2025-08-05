@@ -24,9 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class LoginComponent {
   private readonly formBuilder = inject(FormBuilder);
-  private readonly facade = inject(LoginFacade);
-
-  loginValid = true;
+  readonly facade = inject(LoginFacade);
 
   readonly loginForm = this.formBuilder.group<LoginForm>({
     username: this.formBuilder.nonNullable.control('', [Validators.required]),
@@ -43,17 +41,7 @@ export class LoginComponent {
     )
       return;
 
-    // this.facade
-    //   .login({ username: formValue.username, password: formValue.password })
-    //   .subscribe({
-    //     next: (response) => {
-    //       this.loginValid = false;
-    //       console.log('Login success', response.token);
-    //     },
-    //     error: (error) => {
-    //       this.loginValid = false;
-    //       console.log('Login error', error);
-    //     },
-    //   });
+    const { username, password } = this.loginForm.getRawValue();
+    this.facade.login({ username, password });
   }
 }

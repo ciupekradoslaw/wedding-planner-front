@@ -4,11 +4,16 @@ import { login, loginFailed, loginSuccess, logout } from './auth.actions';
 
 export const authReducer = createReducer(
   authInitialState,
-  on(login, (state) => ({ ...state, isLoading: true })),
+  on(login, (state) => ({
+    ...state,
+    isLoading: true,
+    error: null,
+    username: null,
+  })),
 
   on(loginSuccess, (state, { username, token }) => ({
     ...state,
-    username: username,
+    username,
     token,
     isLoading: false,
     isAuthenticated: true,
