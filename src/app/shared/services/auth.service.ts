@@ -11,7 +11,6 @@ export class AuthService {
   private readonly http = inject(HttpClient);
 
   login(request: LoginRequest): Observable<UserInterface> {
-    console.log('login', request);
     return this.http.post<UserInterface>(API_ENDPOINTS.login(), request);
   }
 }

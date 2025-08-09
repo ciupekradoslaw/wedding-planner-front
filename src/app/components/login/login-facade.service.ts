@@ -13,7 +13,6 @@ export class LoginFacade {
   readonly error = this.store.selectSignal(selectError);
 
   login(payload: { username: string; password: string }) {
-    console.log(payload);
     this.store.dispatch(login(payload));
   }
 }
