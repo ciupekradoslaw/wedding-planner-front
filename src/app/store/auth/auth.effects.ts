@@ -1,7 +1,7 @@
 import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthService } from '../../shared/services/auth.service';
-import { login, loginFailed, loginSuccess } from './auth.actions';
+import { login, loginFailed, loginSuccess, logout } from './auth.actions';
 import { catchError, EMPTY, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
@@ -13,6 +13,22 @@ export class LoginEffects {
   private readonly actions$ = inject(Actions);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+
+  readonly logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(logout),
+        tap(() => {
+          console.log('CLEAR LOGOUT');
+          if (isPlatformBrowser(this.platformId)) {
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('auth_username');
+          }
+          this.router.navigate(['/login']);
+        })
+      ),
+    { dispatch: false }
+  );
 
   readonly login$ = createEffect(() =>
     this.actions$.pipe(

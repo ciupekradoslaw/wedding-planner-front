@@ -2,4 +2,7 @@ import { environment } from '../../environments/environment';
 
 export const API_ENDPOINTS = {
   login: () => `${environment.apiUrl}/auth/login`,
+
+  // Guest group
+  guestGroups: () => `${environment.apiUrl}/guest-groups`,
 };
