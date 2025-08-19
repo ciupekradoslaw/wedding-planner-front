@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { logout } from '../../store/auth';
+import { logout, selectIsAuthenticated } from '../../store/auth';
 
 @Injectable()
 export class ToolbarFacade {
@@ -9,4 +9,6 @@ export class ToolbarFacade {
   logout() {
     this.store.dispatch(logout());
   }
+
+  readonly isAuthenticated = this.store.selectSignal(selectIsAuthenticated);
 }

@@ -5,10 +5,11 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { ToolbarFacade } from './toolbar-facade.service';
 import { GuestGroupService } from '../../shared/services/guest-group.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
-  imports: [CommonModule, MatToolbarModule, MatIcon, MatIconButton],
+  imports: [CommonModule, MatToolbarModule, MatIcon, MatIconButton, RouterLink],
   templateUrl: './toolbar.component.html',
   providers: [ToolbarFacade],
 })
@@ -17,7 +18,6 @@ export class ToolbarComponent implements OnInit {
   readonly guestGroupsService = inject(GuestGroupService);
 
   onLogout() {
-    console.log('logout');
     this.facade.logout();
   }
 

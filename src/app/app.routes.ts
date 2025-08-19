@@ -1,13 +1,12 @@
 import { Route } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout/layout.component';
-import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const appRoutes: Route[] = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
@@ -16,9 +15,14 @@ export const appRoutes: Route[] = [
             (m) => m.HomeComponent
           ),
       },
+      {
+        path: 'admin',
+        canActivate: [authGuard],
+        loadChildren: () =>
+          import('./admin/admin.routes').then((m) => m.adminRoutes),
+      },
     ],
   },
-
   {
     path: '',
     component: AuthLayoutComponent,

@@ -1,10 +1,15 @@
 <mat-toolbar>
-  <button matIconButton aria-label="Example icon-button with menu icon">
+  <button matIconButton>
     <mat-icon>menu</mat-icon>
   </button>
   <span>Wedding planner</span>
   <span class="flex-1"></span>
-  <button matIconButton aria-label="Example icon-button with share icon" (click)="onLogout()">
-    <mat-icon>logout</mat-icon>
-  </button>
+  @if (facade.isAuthenticated()) {
+    <button matIconButton routerLink="/admin">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button matIconButton (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  }
 </mat-toolbar>

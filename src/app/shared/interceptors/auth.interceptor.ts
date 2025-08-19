@@ -9,7 +9,10 @@ export function authInterceptor(
   next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> {
   const store = inject(Store);
-  const token = localStorage.getItem('auth_token');
+  let token: string | null = null;
+  if (typeof window !== 'undefined' && window.localStorage) {
+    token = localStorage.getItem('auth_token');
+  }
 
   const authReq = token
     ? req.clone({
