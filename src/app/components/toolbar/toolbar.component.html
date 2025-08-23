@@ -5,9 +5,12 @@
   <span>Wedding planner</span>
   <span class="flex-1"></span>
   @if (facade.isAuthenticated()) {
-    <button matIconButton routerLink="/admin">
+    <button matIconButton [matMenuTriggerFor]="settingsMenu">
       <mat-icon>settings</mat-icon>
     </button>
+    <mat-menu #settingsMenu="matMenu">
+      <button mat-menu-item routerLink="/admin/guests">{{'ADMIN.GUESTS' | translate}}</button>
+    </mat-menu>
     <button matIconButton (click)="onLogout()">
       <mat-icon>logout</mat-icon>
     </button>

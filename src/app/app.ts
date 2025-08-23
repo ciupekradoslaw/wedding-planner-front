@@ -8,5 +8,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.scss',
 })
 export class App {
-  protected title = 'wedding-planner-front';
+  constructor() {
+    // this.translate.addLangs(['pl']);
+    // this.translate.setFallbackLang('pl');
+    // this.translate.use('pl');
+  }
 }
