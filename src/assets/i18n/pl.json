@@ -1,6 +1,7 @@
 {
   "ADMIN": {
-    "GUESTS": "Goście weselni"
-  },
-  "GUESTS": "Goście weselni"
+    "TITLE": "Administracja",
+    "GUESTS": "Goście weselni",
+    "LOGOUT": "Wyloguj"
+  }
 }

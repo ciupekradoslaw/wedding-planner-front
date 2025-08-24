@@ -9,10 +9,14 @@
       <mat-icon>settings</mat-icon>
     </button>
     <mat-menu #settingsMenu="matMenu">
-      <button mat-menu-item routerLink="/admin/guests">{{'ADMIN.GUESTS' | translate}}</button>
+      <button mat-menu-item routerLink="/admin">{{'ADMIN.TITLE' | translate}}</button>
     </mat-menu>
-    <button matIconButton (click)="onLogout()">
+
+    <button matIconButton [matMenuTriggerFor]="logoutMenu">
       <mat-icon>logout</mat-icon>
     </button>
+    <mat-menu #logoutMenu="matMenu">
+      <button mat-menu-item (click)="onLogout()">{{'ADMIN.LOGOUT' | translate}}</button>
+    </mat-menu>
   }
 </mat-toolbar>
