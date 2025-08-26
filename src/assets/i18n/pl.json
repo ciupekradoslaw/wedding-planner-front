@@ -2,6 +2,7 @@
   "ADMIN": {
     "TITLE": "Administracja",
     "GUESTS": "Lista gości",
+    "TABLES": "Stoliki",
     "LOGOUT": "Wyloguj"
   }
 }

@@ -9,13 +9,6 @@ export const appRoutes: Route[] = [
     component: LayoutComponent,
     children: [
       {
-        path: 'home',
-        loadComponent: () =>
-          import('./components/home/home.component').then(
-            (m) => m.HomeComponent
-          ),
-      },
-      {
         path: 'admin',
         canActivate: [authGuard],
         loadChildren: () =>

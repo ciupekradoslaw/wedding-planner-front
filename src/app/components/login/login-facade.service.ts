@@ -1,6 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { login, selectError, selectIsAuthenticated, selectIsLoading } from '../../store/auth';
+import {
+  login,
+  selectError,
+  selectIsAuthenticated,
+  selectIsLoading,
+} from '../../store/auth';
 
 @Injectable()
 export class LoginFacade {

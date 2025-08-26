@@ -19,7 +19,6 @@ export class LoginEffects {
       this.actions$.pipe(
         ofType(logout),
         tap(() => {
-          console.log('CLEAR LOGOUT');
           if (isPlatformBrowser(this.platformId)) {
             localStorage.removeItem('auth_token');
             localStorage.removeItem('auth_username');
@@ -57,7 +56,15 @@ export class LoginEffects {
       this.actions$.pipe(
         ofType(loginSuccess),
         tap(() => {
-          this.router.navigate(['/']);
+          let redirectUrl = '/';
+          if (isPlatformBrowser(this.platformId)) {
+            const url = localStorage.getItem('redirectUrl');
+            if (url) {
+              redirectUrl = url;
+              localStorage.removeItem('redirectUrl');
+            }
+          }
+          this.router.navigateByUrl(redirectUrl);
         })
       ),
     { dispatch: false }
@@ -69,6 +76,8 @@ export class LoginEffects {
       const username = localStorage.getItem('auth_username');
 
       if (token) {
+        const url = window.location.pathname;
+        localStorage.setItem('redirectUrl', url);
         return of(loginSuccess({ username, token }));
       }
     }
